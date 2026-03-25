@@ -1,6 +1,6 @@
 {
-  "appId": "com.flexorfold.app",
-  "appName": "FlexOrFold",
+  "appId": "com.putuporshutup.app",
+  "appName": "Put Up or Shut Up",
   "webDir": "dist",
   "ios": {
     "contentInset": "always",

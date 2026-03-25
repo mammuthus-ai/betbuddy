@@ -31,7 +31,7 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (mobile apps, same-origin, curl)
     if (!origin) return callback(null, true);
-    const allowed = [config.clientURL, 'https://flexorfold.app', 'capacitor://localhost', 'http://localhost'].filter(Boolean);
+    const allowed = [config.clientURL, 'https://putuporshutup.app', 'capacitor://localhost', 'http://localhost'].filter(Boolean);
     if (allowed.some(a => origin.startsWith(a))) return callback(null, true);
     callback(null, true); // Allow all in dev; tighten for production
   },
@@ -75,5 +75,5 @@ app.use((err, req, res, next) => {
 });
 
 httpServer.listen(config.port, '0.0.0.0', () => {
-  console.log(`FlexOrFold server running on port ${config.port}`);
+  console.log(`Put Up or Shut Up server running on port ${config.port}`);
 });

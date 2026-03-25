@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const dbPath = join(__dirname, 'flexorfold.db');
+const dbPath = join(__dirname, 'putuporshutup.db');
 
 const db = new Database(dbPath);
 
