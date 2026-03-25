@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import BetBuddy from './App'
+import { AuthProvider } from './AuthContext'
+import FlexOrFold from './App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BetBuddy />
+    <AuthProvider>
+      <FlexOrFold />
+    </AuthProvider>
   </React.StrictMode>,
 )

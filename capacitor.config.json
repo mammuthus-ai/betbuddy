@@ -1,0 +1,9 @@
+{
+  "appId": "com.flexorfold.app",
+  "appName": "FlexOrFold",
+  "webDir": "dist",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#0a0a0f"
+  }
+}
