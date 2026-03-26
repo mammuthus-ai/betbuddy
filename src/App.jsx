@@ -228,8 +228,8 @@ function LoginPage() {
             fontFamily: "'Space Mono', monospace", fontWeight: 700,
             animation: "bounceIn 0.6s ease, float 3s ease-in-out infinite 0.6s",
             filter: "drop-shadow(0 4px 20px rgba(108,99,255,0.4))",
-          }}>FoF</div>
-          <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: -1, animation: "slideUp 0.5s ease 0.2s both" }}>FlexOrFold</div>
+          }}>PUSU</div>
+          <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: -1, animation: "slideUp 0.5s ease 0.2s both" }}>PutUpOrShutUp</div>
           <div style={{
             fontSize: 13, color: "#888", letterSpacing: 2, textTransform: "uppercase", marginTop: 8,
             fontWeight: 600, animation: "fadeIn 0.8s ease 0.5s both",
@@ -293,7 +293,7 @@ function LoginPage() {
 
 /* ==================== MAIN APP ==================== */
 
-export default function FlexOrFold() {
+export default function PutUpOrShutUp() {
   const { user, loading, logout, refreshUser, isAuthenticated } = useAuth();
   const socket = useSocket();
 
@@ -551,7 +551,7 @@ export default function FlexOrFold() {
             background: "linear-gradient(135deg, #6c63ff, #ef476f)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
             fontFamily: "'Space Mono', monospace", fontWeight: 700,
-          }}>FoF</div>
+          }}>PUSU</div>
           <div style={{ color: "#888", fontSize: 14 }}>Loading...</div>
         </div>
       </div>
@@ -632,10 +632,10 @@ export default function FlexOrFold() {
             background: "linear-gradient(135deg, #6c63ff, #ef476f, #ffd166)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
             fontFamily: "'Space Mono', monospace", fontWeight: 700,
-          }}>FoF</div>
+          }}>PUSU</div>
           <div>
-            <div style={{ fontSize: 18, fontWeight: 800, letterSpacing: -0.5 }}>FlexOrFold</div>
-            <div style={{ fontSize: 10, color: "#666", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700 }}>Flex or fold</div>
+            <div style={{ fontSize: 18, fontWeight: 800, letterSpacing: -0.5 }}>PutUpOrShutUp</div>
+            <div style={{ fontSize: 10, color: "#666", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700 }}>Put up or shut up</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -1569,7 +1569,7 @@ function FriendsView({ user, showToast }) {
   };
 
   const handleInviteSMS = (phone) => {
-    const message = encodeURIComponent("Join me on FlexOrFold! Put your money where your mouth is. Download here: https://flexorfold.app");
+    const message = encodeURIComponent("Join me on PutUpOrShutUp! Put your money where your mouth is. Download here: https://putuporshutup.app");
     if (window.Capacitor) {
       window.open(`sms:${phone}&body=${message}`);
     } else {
@@ -1783,7 +1783,7 @@ function FriendsView({ user, showToast }) {
           <div style={{ marginTop: 12 }}>
             {contactMatches.length > 0 && (
               <div style={{ marginBottom: 12 }}>
-                <div style={{ fontSize: 12, color: "#52b788", fontWeight: 600, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>On FlexOrFold</div>
+                <div style={{ fontSize: 12, color: "#52b788", fontWeight: 600, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>On PutUpOrShutUp</div>
                 {contactMatches.map(m => (
                   <div key={m.id} style={{
                     display: "flex", alignItems: "center", gap: 10, padding: "8px 0",
@@ -1812,7 +1812,7 @@ function FriendsView({ user, showToast }) {
 
             {contactInvites.length > 0 && (
               <div>
-                <div style={{ fontSize: 12, color: "#f2cc8f", fontWeight: 600, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>Invite to FlexOrFold</div>
+                <div style={{ fontSize: 12, color: "#f2cc8f", fontWeight: 600, marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>Invite to PutUpOrShutUp</div>
                 {contactInvites.map((inv, i) => (
                   <div key={i} style={{
                     display: "flex", alignItems: "center", gap: 10, padding: "8px 0",
@@ -2051,7 +2051,7 @@ function ShopView({ user, showToast, refreshUser }) {
     <div style={{ animation: "slideUp 0.3s ease" }}>
       <div style={{ marginBottom: 20 }}>
         <h2 style={{ fontSize: 24, fontWeight: 900, marginBottom: 4, display: "flex", alignItems: "center", gap: 8 }}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e59cff" strokeWidth="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Shop</h2>
-        <div style={{ fontSize: 13, color: "#888" }}>Upgrade your FlexOrFold experience</div>
+        <div style={{ fontSize: 13, color: "#888" }}>Upgrade your PutUpOrShutUp experience</div>
       </div>
 
       {loading ? (

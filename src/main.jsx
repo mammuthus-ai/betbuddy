@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { AuthProvider } from './AuthContext'
-import FlexOrFold from './App'
+import PutUpOrShutUp from './App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <FlexOrFold />
+      <PutUpOrShutUp />
     </AuthProvider>
   </React.StrictMode>,
 )

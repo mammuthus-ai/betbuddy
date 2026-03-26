@@ -3,7 +3,7 @@ dotenv.config();
 
 export default {
   port: parseInt(process.env.PORT || process.env.SERVER_PORT || '3001'),
-  jwtSecret: process.env.JWT_SECRET || 'flexorfold-dev-secret',
+  jwtSecret: process.env.JWT_SECRET || 'putuporshutup-dev-secret',
   google: {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
