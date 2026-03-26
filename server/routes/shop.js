@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import Stripe from 'stripe';
 import { authenticateToken } from '../middleware/auth.js';
+import { moderateImage } from '../middleware/moderation.js';
 import config from '../config.js';
 import db from '../db.js';
 
@@ -213,13 +214,26 @@ router.post('/set-username', authenticateToken, (req, res) => {
   res.json({ ok: true, username: clean });
 });
 
-// Set custom avatar (requires custom_avatar purchase)
-router.post('/set-avatar', authenticateToken, (req, res) => {
+// Set custom avatar (requires custom_avatar purchase + NSFW check)
+router.post('/set-avatar', authenticateToken, async (req, res) => {
   const { avatar } = req.body;
   if (!avatar) return res.status(400).json({ error: 'Avatar required' });
 
   const hasPurchase = db.prepare("SELECT 1 FROM purchases WHERE user_id = ? AND item_id = 'custom_avatar'").get(req.user.id);
   if (!hasPurchase) return res.status(403).json({ error: 'Purchase "Custom Avatar" upgrade first' });
+
+  // Check for inappropriate content
+  if (avatar.startsWith('http://') || avatar.startsWith('https://')) {
+    try {
+      const result = await moderateImage(avatar);
+      if (!result.safe) {
+        return res.status(400).json({ error: `Avatar rejected: ${result.reason}. Please choose an appropriate image.` });
+      }
+    } catch (err) {
+      console.error('Moderation check failed:', err.message);
+      // Allow on error to not block the user
+    }
+  }
 
   db.prepare('UPDATE users SET custom_avatar = ? WHERE id = ?').run(avatar, req.user.id);
   res.json({ ok: true, avatar });

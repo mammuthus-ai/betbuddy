@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join, extname } from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { authenticateToken } from '../middleware/auth.js';
+import { moderateFile } from '../middleware/moderation.js';
 import db from '../db.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -33,7 +34,7 @@ const upload = multer({
 const router = Router();
 
 // Upload proof
-router.post('/:betId/proof', authenticateToken, upload.single('file'), (req, res) => {
+router.post('/:betId/proof', authenticateToken, upload.single('file'), async (req, res) => {
   const betId = req.params.betId;
 
   const bet = db.prepare('SELECT id FROM bets WHERE id = ?').get(betId);
@@ -44,7 +45,22 @@ router.post('/:betId/proof', authenticateToken, upload.single('file'), (req, res
   const isParticipant = db.prepare('SELECT 1 FROM bet_sides WHERE bet_id = ? AND user_id = ?').get(betId, req.user.id);
   if (!isParticipant) return res.status(403).json({ error: 'Only participants can upload proof' });
 
+  // Moderate uploaded images for inappropriate content
   const fileType = req.file.mimetype.startsWith('video') ? 'video' : 'image';
+  if (fileType === 'image') {
+    try {
+      const modResult = await moderateFile(req.file.path);
+      if (!modResult.safe) {
+        // Delete the uploaded file
+        const fs = await import('fs');
+        fs.unlinkSync(req.file.path);
+        return res.status(400).json({ error: `Image rejected: ${modResult.reason}. Please upload an appropriate image.` });
+      }
+    } catch (err) {
+      console.error('Proof moderation failed:', err.message);
+    }
+  }
+
   const filePath = `/uploads/${req.file.filename}`;
 
   const result = db.prepare(`
