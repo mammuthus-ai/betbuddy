@@ -44,6 +44,9 @@ app.use(passport.initialize());
 // Static files for uploads
 app.use('/uploads', express.static(join(__dirname, 'uploads')));
 
+// Public pages (privacy policy, terms of service)
+app.use(express.static(join(__dirname, 'public')));
+
 // Routes
 app.use('/auth', authRoutes);
 app.use('/api/bets', betRoutes);
