@@ -111,7 +111,7 @@ function checkAndAwardBadges(userId) {
   }
 
   // Shutterbug: uploaded proof for 10+ games
-  const proofs = db.prepare('SELECT COUNT(DISTINCT bet_id) as c FROM proof WHERE user_id = ?').get(userId);
+  const proofs = db.prepare('SELECT COUNT(DISTINCT bet_id) as c FROM bet_proofs WHERE user_id = ?').get(userId);
   if (proofs && proofs.c >= 10 && !existingBadges.has('shutterbug')) {
     awards.push('shutterbug');
   }
@@ -518,7 +518,12 @@ router.post('/:id/settle', authenticateToken, validateSettle, (req, res) => {
     }
   });
 
-  settleTx();
+  try {
+    settleTx();
+  } catch (err) {
+    console.error('Settlement error:', err.message, err.stack);
+    return res.status(500).json({ error: `Settlement failed: ${err.message}` });
+  }
 
   const updatedBet = getBetFull(betId);
   const io = req.app.get('io');
