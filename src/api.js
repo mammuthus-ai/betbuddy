@@ -1,6 +1,6 @@
 const isCapacitor = window.Capacitor !== undefined;
 const PROD_API = import.meta.env.VITE_API_URL || '';
-const BASE = isCapacitor ? (PROD_API || 'http://localhost:3001') : PROD_API;
+const BASE = isCapacitor ? (PROD_API || 'https://putuporshutup-production.up.railway.app') : PROD_API;
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
