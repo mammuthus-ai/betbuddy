@@ -222,14 +222,12 @@ function LoginPage() {
       }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{
-            fontSize: 72, lineHeight: 1, marginBottom: 12,
+            fontSize: 36, fontWeight: 900, letterSpacing: -1,
             background: "linear-gradient(135deg, #6c63ff, #ef476f, #ffd166)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-            fontFamily: "'Space Mono', monospace", fontWeight: 700,
             animation: "bounceIn 0.6s ease, float 3s ease-in-out infinite 0.6s",
             filter: "drop-shadow(0 4px 20px rgba(108,99,255,0.4))",
-          }}>PUSU</div>
-          <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: -1, animation: "slideUp 0.5s ease 0.2s both" }}>PutUpOrShutUp</div>
+          }}>PutUpOrShutUp</div>
           <div style={{
             fontSize: 13, color: "#888", letterSpacing: 2, textTransform: "uppercase", marginTop: 8,
             fontWeight: 600, animation: "fadeIn 0.8s ease 0.5s both",
@@ -547,12 +545,11 @@ export default function PutUpOrShutUp() {
       }}>
         <div style={{ textAlign: "center" }}>
           <div style={{
-            fontSize: 48, lineHeight: 1, marginBottom: 12,
-            background: "linear-gradient(135deg, #6c63ff, #ef476f)",
+            fontSize: 32, fontWeight: 900, letterSpacing: -1,
+            background: "linear-gradient(135deg, #6c63ff, #ef476f, #ffd166)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-            fontFamily: "'Space Mono', monospace", fontWeight: 700,
-          }}>PUSU</div>
-          <div style={{ color: "#888", fontSize: 14 }}>Loading...</div>
+          }}>PutUpOrShutUp</div>
+          <div style={{ color: "#888", fontSize: 14, marginTop: 12 }}>Loading...</div>
         </div>
       </div>
     );
@@ -626,17 +623,12 @@ export default function PutUpOrShutUp() {
         background: "linear-gradient(180deg, rgba(108,99,255,0.1) 0%, transparent 100%)",
         position: "sticky", top: 0, zIndex: 100, backdropFilter: "blur(20px)",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{
-            fontSize: 30, lineHeight: 1,
+            fontSize: 20, fontWeight: 900, letterSpacing: -0.5,
             background: "linear-gradient(135deg, #6c63ff, #ef476f, #ffd166)",
             WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-            fontFamily: "'Space Mono', monospace", fontWeight: 700,
-          }}>PUSU</div>
-          <div>
-            <div style={{ fontSize: 18, fontWeight: 800, letterSpacing: -0.5 }}>PutUpOrShutUp</div>
-            <div style={{ fontSize: 10, color: "#666", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700 }}>Put up or shut up</div>
-          </div>
+          }}>PutUpOrShutUp</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <button className="chunky-btn" onClick={() => { setTab("wallet"); setSelectedBet(null); }} style={{
